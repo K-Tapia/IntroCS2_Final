@@ -1,6 +1,7 @@
 import tkinter as tk
 class Vote_Menu(tk.Frame):
-    def __init__(self, parent, controller):
+    def __init__(self, parent, controller)->None:
+
         super().__init__(parent)
         main_window=controller
 
@@ -29,4 +30,9 @@ class Vote_Menu(tk.Frame):
             command=lambda:main_window.show_frame(main_window.VIEW_POLL_CLASS)
         )
         view_button.pack(pady=10)
-
+        logout_button = tk.Button(
+            inner,
+            text="logout",
+            command=lambda: main_window.show_frame(main_window.LOGIN_CLASS)
+        )
+        logout_button.pack(pady=10)
