@@ -1,14 +1,7 @@
 import tkinter as tk
+from Classes.candidate_class import Candidate
 
-class Candidate:
-    def __init__(self, firstname, lastname, party, vote=0):
-        self.firstname = firstname
-        self.lastname = lastname
-        self.party = party
-        self.votes = vote
 
-    def vote(self):
-        self.votes += 1
 
 class Vote_Candidate(tk.Frame):
     def __init__(self, parent, controller):
@@ -28,7 +21,7 @@ class Vote_Candidate(tk.Frame):
         for name, candidate in candidate_dictionary.items():
             var = tk.BooleanVar()
             checkbox_vars[name] = var
-            cb = tk.Checkbutton(inner, text=f"{name} ({candidate.party})", variable=var)
+            cb = tk.Checkbutton(inner, text=f"{name} ({candidate.get_party()})", variable=var)
             cb.pack(anchor="w")
 
 

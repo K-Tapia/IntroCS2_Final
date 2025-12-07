@@ -1,6 +1,13 @@
 import tkinter as tk
 class Vote_Menu(tk.Frame):
     def __init__(self, parent, controller)->None:
+        """
+           Custom Vote Menu Frame that appears when app first runs/user logout,
+           any instance of lambda is to call a different frame
+           to switch too
+           :param parent: container from Main class
+           :param controller: Main class is controller, switches frames
+           """
 
         super().__init__(parent)
         main_window=controller
