@@ -15,21 +15,20 @@ class User:
         :return: voted as boolean, default as false
         """
         return self.__voted
-    def set_username(self,username):
+    def set_username(self,username:str)->None:
         """
         set username
         :param username:
         """
         self.__username=username
-    def set_voted(self,voted):
+    def set_voted(self,voted:bool)->None:
         """
         set voted
         :param voted:
         """
         self.__voted=voted
-    def user_voted(self)->bool:
+    def user_voted(self)->None:
         """
-        change boolean value of voted to see if user placed vote
-        :return: voted as True
+        change boolean value of voted to True if user places vote
         """
         self.__voted=True

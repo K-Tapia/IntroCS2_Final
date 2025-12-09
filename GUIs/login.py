@@ -1,4 +1,5 @@
 import tkinter as tk
+from Logic.login_functions import *
 class Login(tk.Frame):
     def __init__(self, parent, controller)->None:
         """
@@ -14,10 +15,10 @@ class Login(tk.Frame):
         inner.pack(expand=True)
         tk.Label(inner, text="Enter User for Login",font=("Times New Roman", 24)).pack(pady=10)
         tk.Label(inner, text="Create/Login User").pack(pady=10)
-        user_entry=tk.Entry(inner)
-        user_entry.pack(pady=10)
+        self.user_entry=tk.Entry(inner)
+        self.user_entry.pack(pady=10)
         proceed_btn= tk.Button(
             inner, text="proceed",
-            command=lambda: main_window.show_frame(main_window.VOTE_MENU_CLASS)
+            command=lambda: [user_login(self,main_window),self.user_entry.delete(0, tk.END)]
         )
         proceed_btn.pack(pady=10)
