@@ -5,7 +5,7 @@ from GUIs.add_candidate import Add_Candidate
 from GUIs.view_poll import View_Poll
 from GUIs.vote_candidate import Vote_Candidate
 from GUIs.login import Login
-
+#Video link that helped me understand how to make frames using classes: https://www.youtube.com/watch?v=eaxPK9VIkFM
 class Main(tk.Tk):
     def __init__(self)->None:
         """
@@ -26,6 +26,7 @@ class Main(tk.Tk):
         container = tk.Frame(self)
         container.pack( expand=True)
         self.frames={}
+        #Ai used lines 30-36
         for F in (Login,Vote_Menu,Add_Candidate,View_Poll,Vote_Candidate):
             #for loop that saves frames into a dictionary
             #Frames are stacked in same location, switches between whichever frame is raised.

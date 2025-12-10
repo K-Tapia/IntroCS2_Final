@@ -59,7 +59,7 @@ def user_login(login_frame,main_window)->None:
     """
     user_entry= (login_frame.user_entry.get())
     if not (user_entry.isdigit() and len(user_entry)==4):
-        #AI used for line 64 along with import associated with messagebox
+        #AI used for line 64 along with import associated with messagebox (line 1)
         messagebox.showerror("Invalid Entry","Please enter a valid numeric user id that is 4 characters in length")
         return
     user_list=user_read()
