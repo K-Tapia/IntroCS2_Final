@@ -22,6 +22,7 @@ class Main(tk.Tk):
         self.ADD_CANDIDATE_CLASS = Add_Candidate
         self.VIEW_POLL_CLASS= View_Poll
         self.LOGIN_CLASS=Login
+        self.current_user_id = None
 
         container = tk.Frame(self)
         container.pack( expand=True)
@@ -42,6 +43,9 @@ class Main(tk.Tk):
         :Return: None
         """
         frame=self.frames[Page]
+        # ai usage line 47 and 48
+        if hasattr(frame, 'refresh'):
+            frame.refresh()
         frame.tkraise()
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@ def user_read()->list:
             user_list.append(user)
     return user_list
 
-def user_voted(user_id:str)->None:
+def user_voted(user_id:int)->None:
     """
     For the user_id entered, search users in user list and
     set voted from, False to True, for that user.
@@ -62,6 +62,7 @@ def user_login(login_frame,main_window)->None:
         #AI used for line 64 along with import associated with messagebox (line 1)
         messagebox.showerror("Invalid Entry","Please enter a valid numeric user id that is 4 characters in length")
         return
+    main_window.current_user_id=user_entry
     user_list=user_read()
     user=User(user_entry)
     for u in user_list:

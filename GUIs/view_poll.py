@@ -1,5 +1,6 @@
 import tkinter as tk
 from GUIs.vote_candidate import Candidate
+from Logic.vote_candid_functions import candidate_dictionary
 class View_Poll(tk.Frame):
     def __init__(self, parent, controller):
         """
@@ -13,12 +14,9 @@ class View_Poll(tk.Frame):
         self.controller = controller
         inner = tk.Frame(self)
         inner.pack(expand=True)
-        #dummy data for gui
-        candidate_dictionary = {
-            "Joe Joe": Candidate("Joe ", "Joe", party="Democratic Party"),
-            "Barry Allen": Candidate("Barry ", "Allen", party="Republican Party", votes=1), }
         vote=[]
-        for name,candidate in candidate_dictionary.items():
+        candidate_dict=candidate_dictionary()
+        for name,candidate in candidate_dict.items():
             cvote=candidate.get_votes()
 
             vote.append(cvote)
