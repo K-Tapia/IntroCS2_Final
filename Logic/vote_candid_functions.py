@@ -51,5 +51,8 @@ def submit_vote(frame,root)->None:
     with open("candidates.txt","w") as file:
         for candidate in candid_dict.values():
             file.write(f"{candidate.get_first_name()}|{candidate.get_last_name()}|{candidate.get_party()}|{candidate.get_votes()}\n")
+    messagebox.showinfo("Success", "Vote has been saved")
+
+
 
 

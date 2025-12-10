@@ -28,7 +28,7 @@ class Vote_Candidate(tk.Frame):
 
         ###I had to use ai to figure out the lines below
         ###I tried my best to get the current candidates.txt file to update the widget content but no matter what i tried
-        ### it didn't work. on line 38-45 that was my original logic for the radio buttons
+        ### it didn't work. My original logic for the radio buttons is  on line 38-45 that was
         self.refresh
     def refresh(self):
         """
