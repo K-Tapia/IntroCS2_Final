@@ -1,2 +1,0 @@
-Fd|D|Physical Education|Math|English|Science
-Fd|Dd|Theatre|Math|English|Science

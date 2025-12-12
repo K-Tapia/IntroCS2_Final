@@ -73,18 +73,27 @@ class GradesLogic:
             elif value > 100:
                 item.setText("100")
 
-    def populate_table(self, student):
-        """This function get a student object passed and saves it in the dictionary called courses.
+    def populate_table(self, student,):
+        """T
+         edited this a little later after creating. The function first checks to see if there are students with grades existing already
+            than it saves it to courses for the course/grade column. this function get a student object passed and saves it in the dictionary called courses.
             then set the number of rows equal to the length of courses. Columns is always set to a max of 2 columns
             Then iterate throught the dictionary, set course names in column 1 as uneditable.
             for grade column set grades and make column editable.
+
         """
-        courses = {
-            student.get_math(): 0,
-            student.get_science(): 0,
-            student.get_english(): 0,
-            student.get_elective(): 0
-        }
+        all_grades = self.read_grades()
+
+        fullname = f"{student.get_first_name()} {student.get_last_name()}"
+        if fullname in all_grades:
+            courses = all_grades[fullname]
+        else:
+            courses = {
+                student.get_math(): 0,
+                student.get_science(): 0,
+                student.get_english(): 0,
+                student.get_elective(): 0
+            }
 
         table = self.ui.grades_table_widget
         table.setRowCount(len(courses))
@@ -135,7 +144,57 @@ class GradesLogic:
                  f'{course_list[1].get_course_name()}|{course_list[1]._Courses__course_grade}|' \
                  f'{course_list[2].get_course_name()}|{course_list[2]._Courses__course_grade}|' \
                  f'{course_list[3].get_course_name()}|{course_list[3]._Courses__course_grade}'
-        with open("student_grades.txt", "a") as f:
-            f.write(string + "\n")
+        lines=[]
+
+        with open("student_grades.txt", "r") as f:
+            for line in f:
+                #ai usage line 143-145
+                if not line.startswith(student_name + '|'):
+                    lines.append(line.strip())
+            lines.append(string)
+
+        with open("student_grades.txt", "w") as f:
+            for line in lines:
+                f.write(line + "\n")
 
         QMessageBox.information(self.ui.grades_table_widget, "Saved", f"Grades for {student_name} saved!")
+    def read_names(self)->list:
+        """
+        this functiosn read just the names in each line for student_grades.txt
+        :return: list of student names
+        """
+        student_names = []
+        with open("student_grades.txt", "r") as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    parts = line.split('|')
+                    student_names.append(parts[0])
+        return student_names
+
+    def read_grades(self) -> dict:
+        """
+        Created this function so grades will show in the table widget if they already exist
+        read student_grades.txt and
+        """
+        student_grades_data = {}
+        with open("student_grades.txt", "a+") as f:
+            f.seek(0)
+            for line in f:
+                line = line.strip()
+                if line:
+                    parts = line.split('|')
+                    fullname= parts[0]
+                    course1=parts[1]
+                    course1_grade = int(parts[2])
+                    course2=parts[3]
+                    course2_grade = int(parts[4])
+                    course3=parts[5]
+                    course3_grade = int(parts[6])
+                    course4=parts[7]
+                    course4_grade = int(parts[8])
+                    courses={course1:course1_grade,course2:course2_grade,course3:course3_grade,course4:course4_grade}
+                    student_grades_data[fullname] = courses
+
+        return student_grades_data
+

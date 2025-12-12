@@ -1,3 +1,0 @@
-Fd D|Math|0|English|0|Science|3|Physical Education|2
-Fd Dd|Math|0|English|0|Science|0|Theatre|0
-Fd Dd|Math|33|English|0|Science|33|Theatre|100
