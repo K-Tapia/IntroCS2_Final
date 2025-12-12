@@ -1,9 +1,9 @@
-from GUIs.gui import *
+import sys
+from PyQt6.QtWidgets import QApplication
+from MainWindow import MainWindow
+
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    app = QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
     sys.exit(app.exec())
